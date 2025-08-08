@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.Scanner;
 import algorithms.*;
+import algorithms.CustomHashMap;
 
 public class AdomLogisticsSystem {
 
@@ -8,10 +9,13 @@ public class AdomLogisticsSystem {
     private final CustomHashMap<String, Vehicle> vehicles = new CustomHashMap<>();
     private final CustomQueue<Driver> availableDrivers = new CustomQueue<>();
     private final CustomLinkedList<Delivery> pendingDeliveries = new CustomLinkedList<>();
-    private final CustomPriorityQueue<Vehicle> maintenanceQueue = new CustomPriorityQueue<>((v1, v2) -> {
+    private final CustomPriorityQueue<Vehicle> maintenanceQueue = new CustomPriorityQueue<>(new java.util.Comparator<Vehicle>() {
+    @Override
+    public int compare(Vehicle v1, Vehicle v2) {
         // Priority based on mileage (higher mileage = higher priority)
         return Double.compare(v2.getMileage(), v1.getMileage());
-    });
+    }
+});
     
     // File Paths
     private static final String VEHICLES_FILE = "data/vehicles.txt";
@@ -691,5 +695,9 @@ public class AdomLogisticsSystem {
                 }
             }
         }
+    }
+
+    public CustomPriorityQueue<Vehicle> getMaintenanceQueue() {
+        return maintenanceQueue;
     }
 }

@@ -1,3 +1,4 @@
+import algorithms.CustomHashMap;
 public class Vehicle {
     private String registrationNumber;
     private String type;
@@ -43,8 +44,8 @@ public class Vehicle {
         this.driverID = driverID; 
     }
     
-    public CustomHashMap<String, String> getMaintenanceHistory() { 
-        return maintenanceHistory; 
+    public CustomHashMap<String, String> getMaintenanceHistory() {
+        return maintenanceHistory;
     }
     
     @Override

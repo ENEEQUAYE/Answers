@@ -1,3 +1,5 @@
+import algorithms.CustomArrayList;
+import algorithms.CustomHashMap;
 public class MaintenanceRecord {
     private String vehicleID;
     private String date;
